@@ -48,13 +48,15 @@ func Run(options CLIOptions) {
 		options.FXOption,
 		cmd.Module,
 		pkg.Module,
-		fx.Provide(func() contract.ConfigPath {
-			return options.ConfigPath
-		}),
-		fx.Provide(func() cmd.CommandOptions {
-			return options.CommandOptions
-		}),
-		fx.Provide(options.CLIBooterConstructor),
+		fx.Provide(
+			func() contract.ConfigPath {
+				return options.ConfigPath
+			},
+			func() cmd.CommandOptions {
+				return options.CommandOptions
+			},
+			options.CLIBooterConstructor,
+		),
 		fx.Invoke(boot),
 	}
 	fx.New(opts...).Done()

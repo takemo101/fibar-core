@@ -52,10 +52,12 @@ func Run(options AppOptions) {
 	opts := []fx.Option{
 		options.FXOption,
 		pkg.Module,
-		fx.Provide(func() contract.ConfigPath {
-			return options.ConfigPath
-		}),
-		fx.Provide(options.AppBooterConstructor),
+		fx.Provide(
+			func() contract.ConfigPath {
+				return options.ConfigPath
+			},
+			options.AppBooterConstructor,
+		),
 		fx.Invoke(boot),
 	}
 
