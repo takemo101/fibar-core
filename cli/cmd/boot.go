@@ -22,8 +22,11 @@ type CommandOptions struct {
 	Models     []interface{}
 }
 
-// BaseCommands is base commands slice
-type BaseCommands []contract.Command
+// Commands is commands slice
+type Commands []contract.Command
+
+// BaseCommands is commands slice
+type BaseCommands Commands
 
 // NewBaseCommand is setup command
 func NewBaseCommand(
@@ -41,7 +44,7 @@ func NewBaseCommand(
 }
 
 // Setup all the command
-func (commands BaseCommands) Setup() {
+func (commands Commands) Setup() {
 	for _, cmd := range commands {
 		cmd.Setup()
 	}

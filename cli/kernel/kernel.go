@@ -35,7 +35,7 @@ func boot(
 
 	sql.SetMaxOpenConns(config.DB.Connection.Max)
 
-	baseCommands.Setup()
+	cmd.Commands(baseCommands).Setup()
 	booter.CLIBoot()
 	root.Cmd.Execute()
 
