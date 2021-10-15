@@ -11,7 +11,7 @@ import (
 // AppOptions app boot options
 type AppOptions struct {
 	ConfigPath           contract.ConfigPath
-	AppBooterConstructor func() contract.AppBooter
+	AppBooterConstructor interface{}
 	FXOption             fx.Option
 }
 

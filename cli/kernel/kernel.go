@@ -11,7 +11,7 @@ import (
 type CLIOptions struct {
 	ConfigPath           contract.ConfigPath
 	CommandOptions       cmd.CommandOptions
-	CLIBooterConstructor func() contract.CLIBooter
+	CLIBooterConstructor interface{}
 	FXOption             fx.Option
 }
 

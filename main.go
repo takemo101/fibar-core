@@ -3,12 +3,15 @@ package main
 import (
 	"github.com/takemo101/fibar-core/app"
 	"github.com/takemo101/fibar-core/boot"
+	"github.com/takemo101/fibar-core/pkg"
 	"github.com/takemo101/fibar-core/pkg/contract"
 	"go.uber.org/fx"
 )
 
 // AppBooter is module root struct
-type AppBooter struct{}
+type AppBooter struct {
+	app pkg.Application
+}
 
 // AppBoot all setup
 func (booter AppBooter) AppBoot() {
@@ -16,8 +19,10 @@ func (booter AppBooter) AppBoot() {
 }
 
 // NewAppBooter app create
-func NewAppBooter() contract.AppBooter {
-	return AppBooter{}
+func NewAppBooter(app pkg.Application) contract.AppBooter {
+	return AppBooter{
+		app: app,
+	}
 }
 
 func main() {
